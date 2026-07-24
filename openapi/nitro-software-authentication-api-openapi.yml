@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: Nitro Sign Public Authentication API
+  description: REST API for Nitro Sign
+  version: '0.1'
+servers:
+- url: https://api.gonitro.dev
+security:
+- bearerAuth: []
+tags:
+- name: Authentication
+paths:
+  /oauth/token:
+    post:
+      tags:
+      - Authentication
+      summary: Get Access Token
+      description: 'The Get Access Token endpoint exchanges client credentials for an access token
+
+        using the OAuth 2.0 client credentials flow.
+
+
+        This endpoint accepts a client ID and client secret and returns an access token that
+
+        can be used to authenticate API requests. The token follows standard OAuth 2.0 patterns.
+
+        '
+      operationId: getTokenRfc6749
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthTokenRequest'
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                - $ref: '#/components/schemas/AuthTokenResponse'
+                - $ref: '#/components/schemas/OAuth2TokenResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2ErrorResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OAuth2ErrorResponse'
+      security: []
+components:
+  schemas:
+    OAuth2TokenResponse:
+      type: object
+      description: RFC 6749 compliant OAuth2 token response
+      properties:
+        access_token:
+          type: string
+          description: The access token
+        token_type:
+          type: string
+          description: The token type (typically 'Bearer')
+        expires_in:
+          type: integer
+          format: int64
+          description: Token expiration time in seconds
+    OAuth2ErrorResponse:
+      type: object
+      description: RFC 6749 compliant OAuth2 error response
+      properties:
+        error:
+          type: string
+          description: A single ASCII error code
+        error_description:
+          type: string
+          description: Human-readable ASCII text providing additional information
+        error_uri:
+          type: string
+          description: URI identifying a human-readable web page with information about the error
+    AuthTokenRequest:
+      type: object
+      properties:
+        clientID:
+          type: string
+          description: The client ID for auth client credentials flow
+          minLength: 1
+        clientSecret:
+          type: string
+          description: The client jwtSecret for auth client credentials flow
+          minLength: 1
+      required:
+      - clientID
+      - clientSecret
+    AuthTokenResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: The access token
+        tokenType:
+          type: string
+          description: The token type (typically 'Bearer')
+        expiresIn:
+          type: integer
+          format: int64
+          description: Token expiration time in seconds
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

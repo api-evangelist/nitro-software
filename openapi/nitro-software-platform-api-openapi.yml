@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Nitro Sign Public Authentication Platform API
+  description: REST API for Nitro Sign
+  version: '0.1'
+servers:
+- url: https://api.gonitro.dev
+security:
+- bearerAuth: []
+tags:
+- name: Platform
+paths:
+  /transformations:
+    post:
+      tags:
+      - Platform
+      summary: Request a transformation operation
+      operationId: forwardTransformationsRequest
+      responses:
+        '200':
+          description: OK
+  /generations:
+    post:
+      tags:
+      - Platform
+      summary: Request a generation operation
+      operationId: forwardGenerationsRequest
+      responses:
+        '200':
+          description: OK
+  /extractions:
+    post:
+      tags:
+      - Platform
+      summary: Request an extraction operation
+      operationId: forwardExtractionsRequest
+      responses:
+        '200':
+          description: OK
+  /conversions:
+    post:
+      tags:
+      - Platform
+      summary: Request a conversion operation
+      operationId: forwardConversionsRequest
+      responses:
+        '200':
+          description: OK
+  /jobs/{jobID}:
+    get:
+      tags:
+      - Platform
+      summary: Get the result of a job by its job id
+      operationId: getJobResult
+      responses:
+        '200':
+          description: OK
+  /jobs/{jobID}/status:
+    get:
+      tags:
+      - Platform
+      summary: Get the status of a job by its job id
+      operationId: getJobStatus_1
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
