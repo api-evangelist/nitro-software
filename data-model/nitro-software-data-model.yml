@@ -1,0 +1,50 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/nitro-software-openapi-original.json
+docs: https://developers.gonitro.com/docs/build-nitro/create-envelope
+notes: >-
+  Derived from the Nitro Sign API path hierarchy and request/response schemas. The Sign
+  domain is an Envelope aggregate (Documents, Participants, Fields); the PDF Services domain
+  is a stateless Job model for async conversion/extraction/transformation/generation.
+entities:
+- name: Envelope
+  id: envelopeID (UUIDv4)
+  description: The signing container; holds documents and participants and moves through a signing lifecycle.
+  states: [Draft, Sent, Cancelled, Completed, Sealed]
+  relationships:
+  - has_many: Document
+    via: envelopeID
+  - has_many: Participant
+    via: envelopeID
+- name: Document
+  id: documentID
+  description: A file (PDF) within an envelope that participants read and sign. Max 15 per envelope.
+  relationships:
+  - belongs_to: Envelope
+    via: envelopeID
+  - has_many: Field
+    via: documentID
+- name: Field
+  id: fieldID
+  description: A signable/fillable field placed on a document via bounding-box coordinates and assigned to a participant.
+  relationships:
+  - belongs_to: Document
+    via: documentID
+  - assigned_to: Participant
+    via: participantID
+- name: Participant
+  id: participantID
+  description: A person associated with an envelope (roles include SIGNER, reviewer, CC).
+  relationships:
+  - belongs_to: Envelope
+    via: envelopeID
+  - has_many: Field
+    via: participantID
+- name: Job
+  id: jobID (UUIDv4)
+  description: Asynchronous PDF Services processing job (conversion/extraction/transformation/generation) with status and result.
+  states: [Pending, Processing, Completed, Failed]
+  relationships: []
+key_flows:
+- create envelope -> add documents -> add participants -> place fields -> send-for-signing -> poll/receive events -> download sealed + audit trail
+- submit platform job (async) -> callback on acceptance -> poll job status -> fetch job result

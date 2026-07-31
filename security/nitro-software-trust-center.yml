@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+probe: true
+url: https://www.gonitro.com/trust-center
+also:
+- https://www.gonitro.com/security
+- https://www.gonitro.com/security-compliance
+certifications:
+- SOC 2
+- ISO 27001
+- HIPAA
+- eIDAS QTSP
+- EU-U.S. Data Privacy Framework
+regional_signing_compliance:
+- eIDAS
+- UETA
+- ESIGN Act
+- ZertES
+- Singapore ETA
+- Hong Kong electronic signature regulations
+privacy:
+- GDPR
+- CCPA
+statements:
+- Data is never used for training AI models
+- Security measures are integrated into the core of products, not added later
+- Annual independent third-party security and privacy audits
+data_controller: Nitro Software, Inc., 150 Spear St STE 1500, San Francisco CA 94105
+evidence:
+- source: https://www.gonitro.com/trust-center
+  keywords: [soc 2, iso 27001, hipaa, eidas, qtsp, data privacy framework]
+- source: https://www.gonitro.com/security
+  keywords: [iso 27001, soc 2, eidas qtsp, hipaa, data privacy frameworks]

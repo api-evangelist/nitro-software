@@ -1,0 +1,14 @@
+{
+  "repo": "nitro-software",
+  "feeds": [
+    {
+      "source": "https://www.gonitro.com/legal/privacy-policy",
+      "feed_url": "https://www.gonitro.com/legal/privacy-policy",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-07-25T15:00:33Z"
+}

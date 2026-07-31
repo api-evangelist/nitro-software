@@ -1,0 +1,79 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/nitro-software-openapi-original.json
+note: >-
+  No official hosted/remote Nitro MCP server was found (no listing in docs, npm
+  @modelcontextprotocol, or public MCP registries as of 2026-07). This is a candidate tool
+  surface derived one-to-one from the Nitro API operations to seed an MCP server.
+server:
+  name: nitro
+  transport: http
+  auth: OAuth 2.0 client-credentials bearer JWT (Authorization header)
+tools:
+- name: list_envelopes
+  description: List envelopes for the application (cursor pagination)
+  source_operation: openapi/nitro-software-openapi-original.json#listEnvelopes
+- name: create_envelope
+  description: Create a new sign envelope
+  source_operation: openapi/nitro-software-openapi-original.json#createEnvelope
+- name: get_envelope
+  description: Get an envelope by ID
+  source_operation: openapi/nitro-software-openapi-original.json#getEnvelope
+- name: update_envelope
+  description: Update envelope name, notifications, or signing mode
+  source_operation: openapi/nitro-software-openapi-original.json#updateEnvelope
+- name: delete_envelope
+  description: Permanently delete an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#deleteEnvelope
+- name: cancel_envelope
+  description: Cancel the signing request for an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#cancelEnvelope
+- name: send_for_signing
+  description: Send an envelope to participants for signature
+  source_operation: openapi/nitro-software-openapi-original.json#sendForSigning
+- name: send_reminders
+  description: Send reminder notifications to pending participants
+  source_operation: openapi/nitro-software-openapi-original.json#sendReminders
+- name: create_document
+  description: Upload/create a document in an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#createDocument
+- name: list_documents
+  description: List documents in an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#listDocuments
+- name: reorder_documents
+  description: Reorder documents in an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#reorderDocuments
+- name: create_participant
+  description: Add one or more participants to an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#createParticipant
+- name: list_participants
+  description: List participants of an envelope
+  source_operation: openapi/nitro-software-openapi-original.json#listParticipants
+- name: create_field
+  description: Create one or more fields on a document assigned to a participant
+  source_operation: openapi/nitro-software-openapi-original.json#createField
+- name: list_signer_signing_urls
+  description: Return signing URL + expiry for each signer of a sent envelope
+  source_operation: openapi/nitro-software-openapi-original.json#listSignerSigningUrls
+- name: download_sealed_envelope
+  description: Download a sealed (signed) envelope with audit trail as a ZIP
+  source_operation: openapi/nitro-software-openapi-original.json#downloadSealedEnvelope
+- name: download_audit_trail
+  description: Download the envelope audit-trail PDF
+  source_operation: openapi/nitro-software-openapi-original.json#downloadAuditTrailOfEnvelope
+- name: forward_conversions
+  description: Request a PDF Services conversion operation
+  source_operation: openapi/nitro-software-openapi-original.json#forwardConversionsRequest
+- name: forward_extractions
+  description: Request a PDF Services extraction operation
+  source_operation: openapi/nitro-software-openapi-original.json#forwardExtractionsRequest
+- name: forward_transformations
+  description: Request a PDF Services transformation operation
+  source_operation: openapi/nitro-software-openapi-original.json#forwardTransformationsRequest
+- name: forward_generations
+  description: Request a PDF Services generation operation
+  source_operation: openapi/nitro-software-openapi-original.json#forwardGenerationsRequest
+- name: get_job_result
+  description: Retrieve an async job result
+  source_operation: openapi/nitro-software-openapi-original.json#getJobResult

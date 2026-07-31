@@ -1,0 +1,16 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/nitro-software-openapi-original.json
+skills:
+- file: nitro-software-send-envelope-for-signature.md
+  name: Send an envelope for signature with Nitro Sign
+  api: openapi/nitro-software-openapi-original.json
+  operations: [createEnvelope, createDocument, createParticipant, createField, sendForSigning, listSignerSigningUrls]
+- file: nitro-software-collect-signed-documents.md
+  name: Track and collect signed documents from Nitro Sign
+  api: openapi/nitro-software-openapi-original.json
+  operations: [getEnvelope, listDocuments, downloadSealedEnvelope, downloadSealedDocument, downloadAuditTrailOfEnvelope]
+- file: nitro-software-pdf-services-async-job.md
+  name: Run an async Nitro PDF Services job
+  api: openapi/nitro-software-openapi-original.json
+  operations: [forwardConversionsRequest, forwardTransformationsRequest, getJobResult, getJobStatus_1]

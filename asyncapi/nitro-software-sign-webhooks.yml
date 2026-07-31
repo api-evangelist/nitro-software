@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://developers.gonitro.com/docs/build-nitro/webhook
+type: Webhooks
+spec_type: WebhookCatalog
+note: >-
+  Nitro offers two notification mechanisms. Sign webhooks are long-lived per-application
+  subscriptions delivering real-time envelope/signature events (documented; general
+  availability noted as upcoming). PDF Services callbacks are per-request point-to-point
+  POSTs fired once when an async job is accepted. No provider-published AsyncAPI document
+  exists; this is a captured webhook/event catalog.
+sign_webhooks:
+  registration: one webhook URL per application, registered in the Nitro Admin Portal
+  transport: HTTP POST (JSON), TLS required
+  envelope:
+    fields: [id, type, created, data]
+    id: unique event id (use for de-duplication)
+    created: UTC timestamp
+  delivery:
+    ordering: not guaranteed
+    retry: 5xx/network errors retried; 2xx and 4xx are terminal (acknowledged)
+    consumer_timeout_seconds: 15
+    idempotency: consumers must build idempotent, order-independent handlers keyed on event id
+  security:
+    signing: RFC 9421 HTTP Message Signatures
+    algorithm: hmac-sha256 (client secret as key)
+    signed_components: ['@method', '@path', host, date, content-digest]
+    headers: [Content-Digest, Signature-Input, Signature]
+    keyid: clientId
+  event_types:
+  - EnvelopeCreated
+  - EnvelopeDocumentAdded
+  - EnvelopeDocumentDeleted
+  - EnvelopeSentForSignature
+  - EnvelopeCancelled
+  - SignatureRequestReassigned
+  - SignatureRequestDeclined
+  - SignatureRequestSigned
+  - EnvelopeSigningCompleted
+  - EnvelopeSealed
+  - OwnerMessaged
+pdf_services_callbacks:
+  configured: per-request, in request body delivery.callback
+  trigger: 'Prefer: respond-async header set on the job request'
+  fires: once, on job acceptance (acknowledgement, not completion)
+  payload_fields: [jobID, location]
+  auth: optional custom headers in delivery.callback.headers[]
+  completion: poll GET {location} (result) or GET {location}/status; or use uploadResultTo/uploadResultsTo

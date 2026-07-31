@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+note: >-
+  No published /.well-known/ discovery documents were found. The API host api.gonitro.dev is
+  auth-gated and returns 401 for every path (not a served well-known document); the marketing
+  and docs hosts return 404. No security.txt, OIDC, oauth-authorization-server, api-catalog, or
+  ai-plugin.json is exposed. Recorded so re-runs don't re-probe blindly. No canonical pointer emitted.
+hosts:
+- host: https://api.gonitro.dev
+  documents:
+  - {path: /.well-known/security.txt, status: 401}
+  - {path: /.well-known/openid-configuration, status: 401}
+  - {path: /.well-known/oauth-authorization-server, status: 401}
+  - {path: /.well-known/api-catalog, status: 401}
+  - {path: /.well-known/ai-plugin.json, status: 401}
+- host: https://developers.gonitro.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://www.gonitro.com
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}

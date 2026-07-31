@@ -1,0 +1,116 @@
+# Nitro APIs
+
+## Docs
+
+- [Get Access Token](https://developers.gonitro.com/docs/api-reference/authentication/get-access-token.md): The Get Access Token endpoint exchanges client credentials for an access token using the OAuth 2.0 client credentials flow.
+- [Changelog](https://developers.gonitro.com/docs/api-reference/changelog.md): Latest Nitro API product updates, new endpoints, and announcements.
+- [Image to PDF](https://developers.gonitro.com/docs/api-reference/platform/conversions/imgtopdf.md): Convert common image formats such as JPG and PNG into PDF with the Nitro API.
+- [Miscellaneous to PDF](https://developers.gonitro.com/docs/api-reference/platform/conversions/misctopdf.md): Convert HTML, XML, CSV, RTF, and EPS files to PDF with the Nitro API. Supports both synchronous and async processing.
+- [MS Office to PDF](https://developers.gonitro.com/docs/api-reference/platform/conversions/mstopdf.md): Convert Microsoft Office files such as Word, Excel, and PowerPoint into PDF with the Nitro API.
+- [PDF to PDF/A](https://developers.gonitro.com/docs/api-reference/platform/conversions/pdfa.md): Convert a standard PDF to the ISO-standard PDF/A archival format with the Nitro API for long-term preservation.
+- [PDF to Image](https://developers.gonitro.com/docs/api-reference/platform/conversions/pdftoimg.md): Convert PDF pages into image formats such as JPG and PNG with the Nitro API.
+- [PDF to MS Office](https://developers.gonitro.com/docs/api-reference/platform/conversions/pdftoms.md): Convert a PDF into Microsoft Office formats such as Word, Excel, and PowerPoint with the Nitro API.
+- [Extract Fillable Form Data](https://developers.gonitro.com/docs/api-reference/platform/extractions/extract-fillable-form-data.md): Extract the data of a PDF's existing AcroForm — field names, current values, field types and positions — as JSON, XFDF, FDF, or CSV
+- [Invoices](https://developers.gonitro.com/docs/api-reference/platform/extractions/extract-invoices.md): Extract structured invoice and receipt data from PDFs with the Nitro API. Scanned documents are processed automatically via built-in OCR.
+- [Forms](https://developers.gonitro.com/docs/api-reference/platform/extractions/forms.md): Automatically extract all form field values from a PDF with the Nitro API — no extra parameters required.
+- [PII Bounding Boxes](https://developers.gonitro.com/docs/api-reference/platform/extractions/pii.md): Detect and locate Personally Identifiable Information (PII) in PDFs with the Nitro API. Supports English and Spanish.
+- [Properties](https://developers.gonitro.com/docs/api-reference/platform/extractions/properties.md): Extract PDF metadata fields such as title, author, and creation date from a document with the Nitro API.
+- [Smart Detect Form Fields](https://developers.gonitro.com/docs/api-reference/platform/extractions/smart-detect-form-fields.md): Detect where fillable form fields should be placed in a PDF document and return their bounding boxes as JSON
+- [Tables](https://developers.gonitro.com/docs/api-reference/platform/extractions/tables.md): Automatically extract tabular data from PDFs with the Nitro API, returning structured rows and columns for each table.
+- [Text](https://developers.gonitro.com/docs/api-reference/platform/extractions/text.md): Extract text content from a PDF with the Nitro API, with options for specific pages and natural reading order.
+- [Text Bounding Boxes](https://developers.gonitro.com/docs/api-reference/platform/extractions/text-box.md): Locate specific strings in a PDF with the Nitro API and return the bounding box coordinates for each match.
+- [Create Fillable Forms](https://developers.gonitro.com/docs/api-reference/platform/generations/create-fillable-forms.md): Generate a PDF with detected form fields written as a real AcroForm
+- [Fill Forms](https://developers.gonitro.com/docs/api-reference/platform/generations/fill-forms.md): Fill PDF form fields with the Nitro API — supply values inline or via a CSV, JSON, XFDF, or FDF data file and get back a completed PDF.
+- [Job Results](https://developers.gonitro.com/docs/api-reference/platform/jobs/result.md): Retrieve the result of a completed asynchronous Nitro API conversion, transformation, or extraction job.
+- [Job Status](https://developers.gonitro.com/docs/api-reference/platform/jobs/status.md): Retrieve the current status of an asynchronous Nitro API conversion, transformation, or extraction job.
+- [Compress](https://developers.gonitro.com/docs/api-reference/platform/transformations/compress.md): Compress a PDF to its smallest size with the Nitro API — one call, no options, maximum file-size reduction for sharing and upload.
+- [Delete Pages](https://developers.gonitro.com/docs/api-reference/platform/transformations/delete.md): Delete specific pages from a PDF with the Nitro API using a list of zero-based page indices.
+- [Flatten](https://developers.gonitro.com/docs/api-reference/platform/transformations/flatten.md): Flatten a PDF with the Nitro API. Convert form fields, annotations, signatures, and layers into static, non-editable page content.
+- [Merge](https://developers.gonitro.com/docs/api-reference/platform/transformations/merge.md): Combine multiple PDF files into a single document with the Nitro API, preserving page order across all files.
+- [OCR](https://developers.gonitro.com/docs/api-reference/platform/transformations/ocr.md): Apply OCR to scanned or image-based PDFs with the Nitro API to add a searchable, selectable text layer without changing appearance.
+- [Optimize](https://developers.gonitro.com/docs/api-reference/platform/transformations/optimize.md): Optimize a PDF with the Nitro API using predefined profiles for web viewing, printing, archiving, or minimum file size.
+- [Set Properties](https://developers.gonitro.com/docs/api-reference/platform/transformations/properties.md): Update standard PDF metadata fields such as title, author, and subject with the Nitro API.
+- [Protect](https://developers.gonitro.com/docs/api-reference/platform/transformations/protect.md): Password-protect a PDF and control user permissions with the Nitro API to secure sensitive documents.
+- [Redact](https://developers.gonitro.com/docs/api-reference/platform/transformations/redact.md): Permanently remove or hide sensitive content in a PDF with the Nitro API by applying redaction boxes to specific pages.
+- [Rotate](https://developers.gonitro.com/docs/api-reference/platform/transformations/rotate.md): Rotate one or more pages in a PDF with the Nitro API by specifying page indexes and rotation angles.
+- [Split](https://developers.gonitro.com/docs/api-reference/platform/transformations/split.md): Split a multi-page PDF into multiple files with the Nitro API. Define custom page ranges to control exactly which pages go into each output file.
+- [Unprotect](https://developers.gonitro.com/docs/api-reference/platform/transformations/unprotect.md): Remove passwords and permission restrictions from a protected PDF with the Nitro API.
+- [Watermark](https://developers.gonitro.com/docs/api-reference/platform/transformations/watermark.md): Add an image watermark to any PDF page with the Nitro API. Control position, size, opacity, rotation, and placement.
+- [Cancel Envelope by ID](https://developers.gonitro.com/docs/api-reference/sign/cancel-envelope-by-id.md): The **Cancel Envelope by ID** endpoint cancels the signing request for the envelope specified by its UUIDv4 identifier. This endpoint allows you to cancel an envelope and changes its status to Cancelled but keeps it available for reference and reuse after updates. In Cancelled status, no further sig…
+- [Create Document by Envelope ID](https://developers.gonitro.com/docs/api-reference/sign/create-document-by-envelope-id.md): In Nitro, a *Document* is a file that participants in an eSignature Envelope will read and sign. This could be an employment contract, NDA, legal agreement, banking form, or any other file required in your signature workflow.
+- [Create Envelope](https://developers.gonitro.com/docs/api-reference/sign/create-envelope.md): The **Create Envelope** endpoint creates a new **sign envelope** in Nitro.
+- [Create Field(s) by Document ID](https://developers.gonitro.com/docs/api-reference/sign/create-fields-by-document-id.md): The **Create Field(s) by Document ID** endpoint creates one or more fields on a document and assigns it to a participant. Accepts either a single field object or a bulk request with an 'items' array containing multiple field objects.
+- [Create Participant(s) by Envelope ID](https://developers.gonitro.com/docs/api-reference/sign/create-participants-by-envelope-id.md): The **Create Participant(s) by Envelope ID** endpoint adds one or more participants to a specified envelope. Accepts either a single participant object or a bulk request with an 'items' array. Participants are associated to the parent Envelope and can sign multiple fields in different documents.
+- [Delete Document by ID](https://developers.gonitro.com/docs/api-reference/sign/delete-document-by-id.md): The **Delete Document by ID** endpoint deletes permanently removes a document from an envelope.
+- [Delete Envelope by ID](https://developers.gonitro.com/docs/api-reference/sign/delete-envelope-by-id.md): The **Delete Envelope by ID** endpoint permanently deletes the envelope.
+- [Delete Field by ID](https://developers.gonitro.com/docs/api-reference/sign/delete-field-by-id.md): The **Delete Field by ID** endpoint permanently deletes a field from a document within an envelope.
+- [Delete Fields by Field IDs](https://developers.gonitro.com/docs/api-reference/sign/delete-fields-by-field-ids.md): The **Delete Fields** endpoint permanently deletes multiple fields from a document within an envelope.
+- [Delete Participant by ID](https://developers.gonitro.com/docs/api-reference/sign/delete-participant-by-id.md): The **Delete Participant by ID** endpoint permanently deletes a participant from an envelope.
+- [Delete Participants by Participant IDs](https://developers.gonitro.com/docs/api-reference/sign/delete-participants-by-participant-ids.md): The **Delete Participants** endpoint permanently deletes multiple participants from an envelope.
+- [Download Audit Trail of Envelope](https://developers.gonitro.com/docs/api-reference/sign/download-audit-trail-of-envelope.md): Downloads the PDF file containing the full audit trail for the selected envelope.
+- [Download Original Envelope](https://developers.gonitro.com/docs/api-reference/sign/download-original-envelope.md): The **Download Original Envelope** downloads an envelope's original (unsigned) documents in a ZIP archive.
+- [Download Sealed Document by ID](https://developers.gonitro.com/docs/api-reference/sign/download-sealed-document-by-id.md): The **Download Sealed Document by ID** downloads a single sealed (signed) document as a PDF from a sealed envelope.
+- [Download Sealed Envelope](https://developers.gonitro.com/docs/api-reference/sign/download-sealed-envelope.md): The **Download Sealed Envelope** downloads a sealed (signed) envelope's documents along with audit trail in a ZIP archive.
+- [Get Document by ID](https://developers.gonitro.com/docs/api-reference/sign/get-document-by-id.md): The **Get Document by ID** endpoint retrieves the details of a single document using its identifier within a specific envelope.
+- [Get Envelope by ID](https://developers.gonitro.com/docs/api-reference/sign/get-envelope-by-id.md): The **Get Envelope by ID** endpoint retrieves the details of a single envelope using its UUIDv4 identifier.
+- [List Documents by Envelope ID](https://developers.gonitro.com/docs/api-reference/sign/list-documents-by-envelope-id.md): The **List Documents by Envelope ID** endpoint retrieves all documents associated with a specific envelope. Documents are returned in an `items` array within the JSON response. The request must include the envelope ID to ensure the complete set of documents is retrieved for the correct envelope.
+- [List Envelopes](https://developers.gonitro.com/docs/api-reference/sign/list-envelopes.md): The **List Envelopes** endpoint returns all envelopes associated with an application in an account.
+- [List Fields by Document ID](https://developers.gonitro.com/docs/api-reference/sign/list-fields-by-document-id.md): The **List Fields by Document ID** endpoint retrieves all fields associated with a specific document within an envelope. The request must include the envelope and document ID to ensure the complete set of fields is retrieved for the correct document.
+- [List Participants by Envelope ID](https://developers.gonitro.com/docs/api-reference/sign/list-participants-by-envelope-id.md): The **List Participant by Envelope ID** endpoint returns all participants associated with a specific envelope. The request must include the envelope ID to ensure the complete set of participants is retrieved for the correct envelope.
+- [List Signer Signing URLs by Envelope ID](https://developers.gonitro.com/docs/api-reference/sign/list-signer-signing-urls-by-envelope-id.md): The **List Signer Signing URLs by Envelope ID** endpoint returns the signing URL and its expiry for each signer of an envelope. Only participants with the SIGNER role are included; reviewers and CC recipients are excluded. The envelope must be in the SENT status; otherwise the request is rejected wi…
+- [Reorder Documents by Envelope ID](https://developers.gonitro.com/docs/api-reference/sign/reorder-documents-by-envelope-id.md): The **Reorder Documents by Envelope ID** endpoint reorders all documents associated with a specific envelope based on the order specified in the request body. Documents are returned in an `items` array within the JSON response reflecting the new order.
+- [Send Envelope for Signing](https://developers.gonitro.com/docs/api-reference/sign/send-envelope-for-signing.md): The **Send Envelope for Signing** endpoint sends an envelope to participants for signature collection.
+- [Send Reminders for Envelope](https://developers.gonitro.com/docs/api-reference/sign/send-reminders-for-envelope.md): The **Send Reminders for Envelope** endpoint triggers reminder notifications to pending participants of a specified envelope using its UUIDv4 identifier.
+- [Update Document by ID](https://developers.gonitro.com/docs/api-reference/sign/update-document-by-id.md): The **Update Document by ID** endpoint allows you to update an existing document's metadata within an envelope. This endpoint performs a partial update on the document, changing only the provided fields while preserving all other properties. Currently, only the document name can be updated.
+- [Update Envelope](https://developers.gonitro.com/docs/api-reference/sign/update-envelope.md): The **Update Envelope** endpoint modifies an envelope’s name, notification settings, or signing mode. All parameters are optional, so you can update any combination of these fields without affecting the others.
+- [Update Field by ID](https://developers.gonitro.com/docs/api-reference/sign/update-field-by-id.md): The **Update Field by ID** endpoint modifies the properties of an existing field. The Field type cannot be updated. All parameters are optional.
+- [Update Participant by ID](https://developers.gonitro.com/docs/api-reference/sign/update-participant-by-id.md): The **Update Participant by ID** endpoint modifies a participant's authentication settings. The participant's email cannot be updated. All parameters are optional.
+- [Rotate Credentials Immediately](https://developers.gonitro.com/docs/authentication/credential-rotation.md): Rotate your Nitro API credentials and immediately revoke a compromised client secret, generate a new one, and restore secure API access.
+- [Get API Credentials](https://developers.gonitro.com/docs/authentication/credentials.md): Get your Nitro API client ID and secret. Create an application in the Admin Portal to authenticate API requests via machine-to-machine OAuth.
+- [Generate Access Tokens](https://developers.gonitro.com/docs/authentication/token-renew.md): Create and renew OAuth access tokens from your client ID and secret to authenticate requests to the Nitro APIs.
+- [Bounding Box Guide](https://developers.gonitro.com/docs/build-nitro/bounding-box.md): Define field position and size in a PDF using bounding box coordinates with the Nitro Sign API. Specify location, width, and height in PDF points.
+- [Create Envelope Tutorial](https://developers.gonitro.com/docs/build-nitro/create-envelope.md): Create an eSignature envelope with the Nitro Sign API. Upload documents, add participants and fields, and send for signing.
+- [API Error Codes](https://developers.gonitro.com/docs/build-nitro/errors.md): Common Nitro API error responses (400, 401, 404, 500…) explained, with what causes each and how to resolve them.
+- [Good Development Practices](https://developers.gonitro.com/docs/build-nitro/good-practices.md): Recommended practices for building reliable, maintainable integrations with the Nitro REST APIs.
+- [Optimize PDF Tutorial](https://developers.gonitro.com/docs/build-nitro/optimize-pdf.md): Optimize a PDF with the Nitro PDF Services API. Choose a profile, send a POST request, and download the result synchronously or async.
+- [PDF Services Postman Collection](https://developers.gonitro.com/docs/build-nitro/pdf-services-postman-collection.md): Import the Nitro PDF Services Postman collection — test conversion, extraction, transformation, and async job endpoints directly in Postman.
+- [Sign Postman Collection](https://developers.gonitro.com/docs/build-nitro/sign-postman-collection.md): Import the Nitro Sign API Postman collection — test envelope, document, participant, and conversion endpoints directly in Postman.
+- [Webhooks & Callbacks](https://developers.gonitro.com/docs/build-nitro/webhook.md): Configure Nitro API webhooks and callbacks. Receive real-time Sign envelope events or per-request PDF Services job notifications via HTTP POST.
+- [Access the Nitro APIs](https://developers.gonitro.com/docs/getting-started/basic-setup.md): Access Nitro's REST APIs for PDF automation and eSignature workflows — conversions, extractions, redactions, transformations, and document signing.
+- [Make your first 'Optimize PDF' API call](https://developers.gonitro.com/docs/getting-started/first-api-call.md): Make your first Nitro PDF Services API call. Send a POST request to optimize a PDF and receive a pre-signed download URL in response.
+- [Make your first 'Get Envelopes' API call](https://developers.gonitro.com/docs/getting-started/first-sign-api-call.md): Fetch envelopes via the Nitro Sign API. Walk through your first GET request using your access token and explore the paginated response.
+
+## OpenAPI Specs
+
+- [extract-fillable-form-data](https://developers.gonitro.com/docs/api-reference/platform/output/extract-fillable-form-data.json)
+- [watermark](https://developers.gonitro.com/docs/api-reference/platform/output/watermark.json)
+- [unprotect](https://developers.gonitro.com/docs/api-reference/platform/output/unprotect.json)
+- [text](https://developers.gonitro.com/docs/api-reference/platform/output/text.json)
+- [text-box](https://developers.gonitro.com/docs/api-reference/platform/output/text-box.json)
+- [tables](https://developers.gonitro.com/docs/api-reference/platform/output/tables.json)
+- [split](https://developers.gonitro.com/docs/api-reference/platform/output/split.json)
+- [smart-detect-form-fields](https://developers.gonitro.com/docs/api-reference/platform/output/smart-detect-form-fields.json)
+- [set-properties](https://developers.gonitro.com/docs/api-reference/platform/output/set-properties.json)
+- [rotate](https://developers.gonitro.com/docs/api-reference/platform/output/rotate.json)
+- [redact](https://developers.gonitro.com/docs/api-reference/platform/output/redact.json)
+- [protect](https://developers.gonitro.com/docs/api-reference/platform/output/protect.json)
+- [pii](https://developers.gonitro.com/docs/api-reference/platform/output/pii.json)
+- [pdftoms](https://developers.gonitro.com/docs/api-reference/platform/output/pdftoms.json)
+- [pdftoimg](https://developers.gonitro.com/docs/api-reference/platform/output/pdftoimg.json)
+- [pdfa](https://developers.gonitro.com/docs/api-reference/platform/output/pdfa.json)
+- [optimize](https://developers.gonitro.com/docs/api-reference/platform/output/optimize.json)
+- [ocr](https://developers.gonitro.com/docs/api-reference/platform/output/ocr.json)
+- [mstopdf](https://developers.gonitro.com/docs/api-reference/platform/output/mstopdf.json)
+- [misctopdf](https://developers.gonitro.com/docs/api-reference/platform/output/misctopdf.json)
+- [merge](https://developers.gonitro.com/docs/api-reference/platform/output/merge.json)
+- [job](https://developers.gonitro.com/docs/api-reference/platform/output/job.json)
+- [imgtopdf](https://developers.gonitro.com/docs/api-reference/platform/output/imgtopdf.json)
+- [get-properties](https://developers.gonitro.com/docs/api-reference/platform/output/get-properties.json)
+- [forms](https://developers.gonitro.com/docs/api-reference/platform/output/forms.json)
+- [flatten](https://developers.gonitro.com/docs/api-reference/platform/output/flatten.json)
+- [fill-forms](https://developers.gonitro.com/docs/api-reference/platform/output/fill-forms.json)
+- [extract-invoices](https://developers.gonitro.com/docs/api-reference/platform/output/extract-invoices.json)
+- [delete](https://developers.gonitro.com/docs/api-reference/platform/output/delete.json)
+- [create-fillable-forms](https://developers.gonitro.com/docs/api-reference/platform/output/create-fillable-forms.json)
+- [compress](https://developers.gonitro.com/docs/api-reference/platform/output/compress.json)
+- [openapi](https://api.gonitro.dev/openapi.json)

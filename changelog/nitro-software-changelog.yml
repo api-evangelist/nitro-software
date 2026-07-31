@@ -1,0 +1,71 @@
+generated: '2026-07-20'
+method: searched
+source: https://developers.gonitro.com/docs/api-reference/changelog
+scheme: dated (month-labelled updates; no semantic version — backwards-compatible-by-design)
+current: public-api
+first_released: '2025-09'
+entries:
+- date: '2026-07'
+  additions:
+  - Extract Fillable Form Data (AcroForm field data as JSON/XFDF/FDF/CSV)
+  breaking: false
+- date: '2026-06'
+  additions:
+  - Smart Detect Form Fields (detect fillable-field bounding boxes)
+  - Compress transformation (smallest-size PDF)
+  - Fill Forms generation
+  - Create Fillable Forms generation
+  improvements:
+  - Fill Forms now accepts XFDF and FDF in addition to CSV and JSON
+  breaking: false
+- date: '2026-05'
+  additions:
+  - Watermark, Optimize, OCR transformations
+  - Invoice extraction
+  - PDF to PDF/A conversion (PDF/A-1b, 2b, 3b)
+  improvements:
+  - Platform file-size limit raised 25MB to 100MB
+  - Platform page-count limit raised 200 to 500 pages per document
+  breaking: false
+- date: '2026-03'
+  improvements:
+  - Create Document by Envelope ID accepts multiple file types
+  deprecations:
+  - Convert File to PDF replaced by Create Document by Envelope ID
+  - Get Converted File by Job ID replaced by Create Document by Envelope ID
+  - Get Conversion Job Status replaced by Create Document by Envelope ID
+  breaking: false
+- date: '2026-02'
+  additions:
+  - Download Sealed Document by ID
+  - Platform transformations (Compress, Flatten, Rotate, DeletePages, Split, Merge, Redact, Set Properties, Protect, Unprotect)
+  - Platform extractions (Text, Forms, Tables, PII Bounding Boxes, Text Bounding Boxes, Properties)
+  - Platform conversions (PDF to Office, Office to PDF, PDF to Image, Image to PDF)
+  breaking: false
+- date: '2026-01'
+  additions:
+  - Update Field by ID
+  improvements:
+  - Create Field(s) by Document ID accepts multiple fields
+  breaking: false
+- date: '2025-12'
+  additions:
+  - Delete Field by ID, Delete Fields by IDs
+  - Download Audit Trail of Envelope
+  - Update/Delete Participant by ID, Delete Participants by IDs
+  - Reorder Documents for Envelope, Update Document by ID
+  breaking: false
+- date: '2025-11'
+  additions:
+  - List Fields for Envelope
+  improvements:
+  - Create Participant(s) accepts multiple participants
+  breaking: false
+- date: '2025-10'
+  additions:
+  - Delete Envelope by ID, Cancel Envelope by ID, Send Reminders for Envelope
+  breaking: false
+- date: '2025-09'
+  highlights:
+  - First version of the public API
+  breaking: false

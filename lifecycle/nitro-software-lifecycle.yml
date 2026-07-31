@@ -1,0 +1,32 @@
+generated: '2026-07-20'
+method: searched
+source:
+- https://developers.gonitro.com/docs/build-nitro/good-practices
+- https://developers.gonitro.com/docs/api-reference/changelog
+versioning:
+  scheme: none
+  current: public-api (first released September 2025)
+  policy: backwards-compatible-by-design (no versioning; additive-only changes)
+  docs: https://developers.gonitro.com/docs/build-nitro/good-practices
+deprecation:
+  policy: >-
+    No formal Sunset/Deprecation header program is documented. Deprecations are announced in
+    the dated changelog; deprecated endpoints are replaced by newer equivalents and remain
+    documented during transition.
+  sunset_header: false
+  changelog: https://developers.gonitro.com/docs/api-reference/changelog
+  deprecated_endpoints:
+  - operation: convertFile (Convert File to PDF)
+    replaced_by: createDocument (Create Document by Envelope ID)
+    announced: '2026-03'
+  - operation: downloadConvertedFile (Get Converted File by Job ID)
+    replaced_by: createDocument
+    announced: '2026-03'
+  - operation: getJobStatus (Get Conversion Job Status, Sign)
+    replaced_by: createDocument
+    announced: '2026-03'
+sla:
+  published: false
+  note: No public uptime SLA target documented; API access is gated to Nitro Sign Enterprise plans.
+status_page: https://status.gonitro.com
+status_page_name: Nitro Sign Status

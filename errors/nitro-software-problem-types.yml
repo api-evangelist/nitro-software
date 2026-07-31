@@ -1,0 +1,148 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/nitro-software-openapi-original.json
+docs: https://developers.gonitro.com/docs/build-nitro/errors
+format: rfc9457
+envelope:
+  media_type: application/problem+json
+  fields: [type, title, status, detail, instance, extensions]
+  notes: >-
+    Error responses follow RFC 9457 Problem Details. The `type` is a machine-readable
+    Nitro problem identifier (e.g. PDFIsPasswordProtected), `extensions` carries structured
+    context (page counts, file sizes, field validation errors, retry_after). Error responses
+    also link to the Error Glossary. OAuth token errors use the RFC 6749 shape
+    (error, error_description, error_uri) instead of problem+json.
+status_codes:
+- status: 400
+  title: Bad Request
+  cause: Malformed request, missing required fields, invalid query syntax, or wrong data format
+- status: 401
+  title: Unauthorized
+  cause: Missing, expired, or malformed access token
+- status: 403
+  title: Forbidden
+  cause: Invalid/expired nitro-guest-id, or account lacks permission for the resource
+- status: 404
+  title: Not Found
+  cause: Referenced resource (envelope, document, participant, job) does not exist
+- status: 405
+  title: Method Not Allowed
+  cause: HTTP method not supported for the endpoint
+- status: 406
+  title: Not Acceptable
+  cause: Accept header requests an unsupported content type
+- status: 408
+  title: Request Timeout
+  cause: Server timed out before request completed (latency, large payloads)
+- status: 409
+  title: Conflict
+  cause: Request conflicts with current resource state (e.g. resending a sent envelope, max 15 documents)
+- status: 410
+  title: Gone
+  cause: Job result file expired or removed from temporary storage — re-submit the request
+- status: 413
+  title: Content Too Large
+  cause: Payload exceeds the maximum size (Sign uploads 25 MB; Platform up to 100 MB per request)
+- status: 415
+  title: Unsupported Media Type
+  cause: File format/media type not supported (envelope documents accept PDF only)
+- status: 422
+  title: Unprocessable Entity
+  cause: Well-formed request with semantic issues (invalid params, too many documents, invalid delivery)
+- status: 429
+  title: Too Many Requests
+  cause: Rate limit exceeded; honor extensions.retry_after (seconds) with exponential backoff
+- status: 500
+  title: Internal Server Error
+  cause: Unhandled server-side error — retry later, contact support if persistent
+problems:
+- type: PDFIsPasswordProtected
+  title: PDF is password protected
+  status: 400
+  remediation: Remove password protection from the PDF before uploading
+- type: ConversionFailed
+  title: Conversion Failed
+  status: 400
+  extensions: [from_type, to_type]
+  remediation: Ensure the input file is a valid, non-corrupted file of the expected type
+- type: BrokenDownloadURL
+  title: Broken Download URL
+  status: 400
+  extensions: [url_truncated]
+  remediation: Verify the source URL is valid and publicly accessible, then retry
+- type: PageLimitReached
+  title: Page Limit Reached
+  status: 400
+  extensions: [page_count, page_limit]
+  remediation: Split the document into smaller parts and process each separately
+- type: CannotDeleteAllPages
+  title: Cannot Delete All Pages
+  status: 400
+  extensions: [page_count]
+  remediation: Leave at least one page — a PDF cannot be empty
+- type: PageIndexOutOfBounds
+  title: Page Index Out Of Bounds
+  status: 400
+  extensions: [page_indices, page_count]
+  remediation: Send only zero-based indices between 0 and page_count-1
+- type: PDFIsNotValid
+  title: PDF is not valid
+  status: 400
+  remediation: Ensure the file is a well-formed PDF before uploading
+- type: WatermarkFormatIsNotSupported
+  title: Provided watermark format is not supported
+  status: 400
+  remediation: Use a supported watermark format per the endpoint docs
+- type: OCRFailed
+  title: OCR processing failed
+  status: 400
+  remediation: Ensure the file is a valid PDF or image and retry
+- type: FormParsingError
+  title: Form Parsing Error
+  status: 400
+  extensions: [part, mime_type]
+  remediation: Ensure each multipart part uses the correct content type
+- type: ClientDisconnectedError
+  title: The client disconnected before the request could be completed
+  status: 400
+  remediation: Keep the connection open for the request duration, especially for large files
+- type: FileTooLarge
+  title: File Too Large
+  status: 413
+  extensions: [file_size_mb, file_size_limit_mb]
+  remediation: Reduce file size below the limit
+- type: RateLimitExceeded
+  title: Rate limit exceeded
+  status: 429
+  extensions: [retry_after]
+  remediation: Wait retry_after seconds, then retry with exponential backoff
+- type: InvalidParamsError
+  title: Invalid Parameters
+  status: 422
+  extensions: [errors]
+  remediation: Inspect extensions.errors[] (field, error, input) and correct the request
+- type: InvalidPlatformMethodError
+  title: Invalid Platform Method
+  status: 422
+  extensions: [method, allowed_methods, group]
+  remediation: Use one of extensions.allowed_methods for the endpoint group
+- type: InvalidDeliveryError
+  title: Invalid Delivery Instructions
+  status: 422
+  extensions: [errors]
+  remediation: Fix the delivery configuration fields listed in extensions.errors[]
+- type: ConversionNotNeededError
+  title: Conversion Not Needed
+  status: 422
+  extensions: [mime_type]
+  remediation: Skip conversion — the input already matches the target format
+schemas:
+- NotFoundProblemDetail
+- DocumentNotFoundProblemDetail
+- BadRequestProblemDetail
+- UnauthorizedProblemDetail
+- EnvelopeInInvalidStateProblemDetail
+- UnprocessableEntityProblemDetail
+- ContentTooLargeProblemDetail
+- InternalServerErrorProblemDetail
+- OAuth2ErrorResponse

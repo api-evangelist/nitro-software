@@ -1,0 +1,67 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/nitro-software-openapi-original.json
+docs:
+- https://developers.gonitro.com/docs/build-nitro/good-practices
+- https://developers.gonitro.com/docs/build-nitro/webhook
+authentication:
+  style: OAuth 2.0 client-credentials, bearer JWT in Authorization header
+  ref: authentication/nitro-software-authentication.yml
+idempotency:
+  supported: partial
+  api_requests:
+    note: >-
+      The write API does not document a request-level Idempotency-Key header. Idempotency
+      is achieved through the resource model: envelope/document/participant/field creation
+      returns a server-assigned id, and a client-supplied nitroDocumentID query parameter on
+      Create Document lets callers correlate/de-duplicate an uploaded document.
+    client_correlation_param: nitroDocumentID
+  webhooks:
+    idempotent_delivery: consumer-side
+    note: >-
+      Nitro explicitly instructs webhook consumers to build idempotent handlers. Every event
+      carries a unique `id` for de-duplication, delivery order is NOT guaranteed, and 5xx/network
+      failures are retried — so handlers must tolerate duplicates and out-of-order events and
+      derive state from the payload (timestamps/resource state) rather than event order.
+    dedup_key: event.id
+pagination:
+  style: cursor
+  params:
+  - pageAfter
+  - pageBefore
+  applies_to:
+  - listEnvelopes
+  response: items[] arrays; other list endpoints (documents, participants, fields) return full items[] per parent
+versioning:
+  scheme: none
+  policy: backwards-compatible-by-design
+  note: >-
+    Nitro does not version the API or its webhook events. New functionality arrives as optional
+    parameters and additional (optional) response fields; existing behavior is not changed.
+    Clients must NOT enforce strict schema validation and must safely ignore unknown fields.
+  ref: lifecycle/nitro-software-lifecycle.yml
+async_jobs:
+  trigger: 'Prefer: respond-async request header (PDF Services)'
+  callback: request-body delivery.callback.URL (single POST on job acceptance)
+  poll: GET /jobs/{jobID} for result, GET /jobs/{jobID}/status for status
+  delivery_options: [callback, uploadResultTo, uploadResultsTo]
+error_envelope:
+  format: rfc9457
+  media_type: application/problem+json
+  ref: errors/nitro-software-problem-types.yml
+rate_limiting:
+  enforced: true
+  signal: 429 RateLimitExceeded with extensions.retry_after (seconds)
+  guidance: respect retry_after with exponential backoff
+  ref: errors/nitro-software-problem-types.yml
+webhook_security:
+  signing: RFC 9421 HTTP Message Signatures (hmac-sha256 over @method,@path,host,date,content-digest)
+  headers: [Content-Digest, Signature-Input, Signature]
+  keyid: clientId
+limits:
+  max_documents_per_envelope: 15
+  sign_upload_max_mb: 25
+  platform_max_mb: 100
+  platform_max_pages: 500
+  applications_per_account: 25
+  webhook_response_timeout_seconds: 15

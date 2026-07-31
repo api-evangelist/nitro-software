@@ -1,0 +1,26 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Nitro API (Sign + PDF Services)
+  version: 1.0.0
+extends: openapi/nitro-software-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 4
+    x-apievangelist-notes: >-
+      Nitro Sign Public API + PDF Services / Document Intelligence Platform. OAuth 2.0
+      client-credentials (bearer JWT), RFC 9457 problem+json errors, RFC 9421 signed Sign
+      webhooks, cursor pagination, async jobs with callbacks. Enterprise-gated.
+    x-api-evangelist-provider: nitro-software
+    x-api-evangelist-tags: [pdf, esignature, documents, document-intelligence, ocr]
+- target: $.info
+  update:
+    x-authentication: authentication/nitro-software-authentication.yml
+    x-conventions: conventions/nitro-software-conventions.yml
+    x-error-catalog: errors/nitro-software-problem-types.yml
+    x-lifecycle: lifecycle/nitro-software-lifecycle.yml
+    x-data-model: data-model/nitro-software-data-model.yml
+    x-webhooks: asyncapi/nitro-software-sign-webhooks.yml
+- target: $.servers
+  update:
+    x-apievangelist-primary-host: https://api.gonitro.dev

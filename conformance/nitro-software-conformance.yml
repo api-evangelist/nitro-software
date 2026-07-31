@@ -1,0 +1,58 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/nitro-software-openapi-original.json
+docs:
+- https://www.gonitro.com/security
+- https://www.gonitro.com/trust-center
+standards:
+- id: oauth2-client-credentials
+  conforms: true
+  evidence: POST /oauth/token client-credentials grant issuing bearer JWT (getTokenRfc6749)
+- id: rfc6749-oauth2
+  conforms: true
+  evidence: OAuth2ErrorResponse uses RFC 6749 error/error_description/error_uri shape
+- id: rfc9457-problem-details
+  conforms: true
+  evidence: error responses use application/problem+json with type/title/status/detail/instance/extensions
+- id: rfc9421-http-message-signatures
+  conforms: true
+  evidence: Sign webhooks signed with Signature-Input/Signature/Content-Digest per RFC 9421 (hmac-sha256)
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: no /.well-known/security.txt served (api host 401, marketing hosts 404)
+- id: cursor-pagination
+  conforms: true
+  evidence: listEnvelopes uses pageAfter/pageBefore cursor parameters
+- id: openapi-3.1
+  conforms: true
+  evidence: openapi/nitro-software-openapi-original.json declares openapi 3.1.0
+- id: pdf-a-archival
+  conforms: true
+  evidence: PDF to PDF/A conversion supports PDF/A-1b, PDF/A-2b, PDF/A-3b
+- id: eidas-qtsp
+  conforms: true
+  evidence: Nitro is an eIDAS Qualified Trust Service Provider (QTSP)
+- id: esign-ueta-act
+  conforms: true
+  evidence: signing compliant with US ESIGN Act and UETA
+- id: soc2
+  conforms: true
+  evidence: SOC 2 (annual third-party audit) per gonitro.com/security
+- id: iso-27001
+  conforms: true
+  evidence: ISO 27001 certified per gonitro.com/security
+- id: hipaa
+  conforms: true
+  evidence: HIPAA compliance per gonitro.com/security
+- id: gdpr
+  conforms: true
+  evidence: GDPR + EU-U.S. Data Privacy Framework per privacy policy / trust center
+- id: fhir-r4
+  conforms: false
+- id: fapi
+  conforms: false
+compliance_programs:
+  certifications: [SOC 2, ISO 27001, HIPAA, eIDAS QTSP, EU-U.S. Data Privacy Framework]
+  regional_signing_laws: [eIDAS, UETA, ESIGN Act, ZertES, Singapore ETA, Hong Kong ETO]
+  audits: annual independent third-party audits
+  page: https://www.gonitro.com/security

@@ -1,0 +1,41 @@
+generated: '2026-07-20'
+method: searched
+source: openapi/nitro-software-openapi-original.json
+docs: https://developers.gonitro.com/docs/authentication/credentials
+summary:
+  types:
+  - http
+  - oauth2
+  model: machine-to-machine OAuth 2.0 client-credentials grant issuing short-lived bearer JWTs
+  api_key_in: []
+  oauth2_flows:
+  - clientCredentials
+oauth2:
+  grant_type: client_credentials
+  token_endpoint: https://api.gonitro.dev/oauth/token
+  request_body:
+    clientID: '<nitro_app_id>'
+    clientSecret: '<your_app_secret>'
+  token_response:
+    accessToken: JWT
+    tokenType: Bearer
+    expiresIn: 86400
+  notes: >-
+    Credentials (Client ID + Client Secret + OAuth token endpoint) are issued per application
+    in the Nitro Admin Portal (admin.gonitro.com); up to 25 applications per account. API
+    access requires a Nitro Sign Enterprise plan. Tokens should be cached to their expiresIn
+    and renewed on 401. No OAuth scopes are declared — access is application/tenant scoped.
+    Credentials can be rotated immediately from the Admin Portal to revoke a compromised secret.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  applied_to: all /sign/* and /transformations,/generations,/extractions,/conversions,/jobs operations
+  sources:
+  - openapi/nitro-software-openapi-original.json
+extra_headers:
+- name: nitro-guest-id
+  note: guest-scoped access header (403 when invalid/expired) for guest signer flows
+credential_rotation:
+  docs: https://developers.gonitro.com/docs/authentication/credential-rotation

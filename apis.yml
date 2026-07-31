@@ -1,23 +1,175 @@
 aid: nitro-software
 name: Nitro Software
-description: Nitro Software is a company surfaced as a portfolio company of battery-ventures and added
-  to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment
-  pipeline.
+description: >-
+  Nitro Software is a document productivity company (San Francisco, CA; part of the Nitro
+  Productivity Platform) offering PDF editing, eSignature (Nitro Sign), and document
+  intelligence. Nitro publishes a public developer platform of REST APIs at
+  developers.gonitro.com covering two surfaces: a PDF Services / Document Intelligence
+  Platform API (convert, extract, transform, redact, OCR, generate/fill forms) and the
+  Nitro Sign API (envelopes, documents, participants, fields, sealing, audit trails, and
+  signer signing URLs). The APIs use machine-to-machine OAuth 2.0 client-credentials with
+  short-lived bearer JWTs, RFC 9457 problem+json errors, cursor pagination, asynchronous
+  jobs with callbacks, and RFC 9421 signed Sign webhooks. API access requires a Nitro Sign
+  Enterprise plan.
 url: https://raw.githubusercontent.com/api-evangelist/nitro-software/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - battery-ventures
-x-tier: stub
+x-tier: enriched
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://www.gonitro.com/favicon.ico
 tags:
 - Company
-apis: []
+- PDF
+- Documents
+- eSignature
+- Electronic Signature
+- Document Management
+- Document Intelligence
+- OCR
+- Data Extraction
+- Productivity
+apis:
+- aid: nitro-software:nitro-software-authentication-api
+  name: Nitro Software Authentication API
+  description: The Authentication API from Nitro Software — 1 operation(s) for authentication.
+  humanURL: https://developers.gonitro.com/docs
+  baseURL: https://api.gonitro.dev
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/nitro-software-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gonitro.com/docs
+  - type: APIReference
+    url: https://developers.gonitro.com/docs/api-reference/sign/list-envelopes
+  - type: GettingStarted
+    url: https://developers.gonitro.com/docs/getting-started/basic-setup
+  - type: Authentication
+    url: authentication/nitro-software-authentication.yml
+- aid: nitro-software:nitro-software-platform-api
+  name: Nitro Software Platform API
+  description: The Platform API from Nitro Software — 6 operation(s) for platform.
+  humanURL: https://developers.gonitro.com/docs
+  baseURL: https://api.gonitro.dev
+  tags:
+  - Platform
+  properties:
+  - type: OpenAPI
+    url: openapi/nitro-software-platform-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gonitro.com/docs
+  - type: APIReference
+    url: https://developers.gonitro.com/docs/api-reference/sign/list-envelopes
+  - type: GettingStarted
+    url: https://developers.gonitro.com/docs/getting-started/basic-setup
+  - type: Authentication
+    url: authentication/nitro-software-authentication.yml
+- aid: nitro-software:nitro-software-sign-api
+  name: Nitro Software Sign API
+  description: The Sign API from Nitro Software — 22 operation(s) for sign.
+  humanURL: https://developers.gonitro.com/docs
+  baseURL: https://api.gonitro.dev
+  tags:
+  - Sign
+  properties:
+  - type: OpenAPI
+    url: openapi/nitro-software-sign-api-openapi.yml
+  - type: Documentation
+    url: https://developers.gonitro.com/docs
+  - type: APIReference
+    url: https://developers.gonitro.com/docs/api-reference/sign/list-envelopes
+  - type: GettingStarted
+    url: https://developers.gonitro.com/docs/getting-started/basic-setup
+  - type: Authentication
+    url: authentication/nitro-software-authentication.yml
+common:
+- type: AgenticAccess
+  url: agentic-access/nitro-software-agentic-access.yml
+- type: Authentication
+  url: authentication/nitro-software-authentication.yml
+- type: DeveloperPortal
+  url: https://developers.gonitro.com/docs
+- type: Documentation
+  url: https://developers.gonitro.com/docs
+- type: APIReference
+  url: https://developers.gonitro.com/docs/api-reference/sign/list-envelopes
+- type: GettingStarted
+  url: https://developers.gonitro.com/docs/getting-started/basic-setup
+- type: ChangeLog
+  url: changelog/nitro-software-changelog.yml
+- type: StatusPage
+  url: https://status.gonitro.com
+- type: Deprecation
+  url: lifecycle/nitro-software-lifecycle.yml
+- type: Webhooks
+  url: asyncapi/nitro-software-sign-webhooks.yml
+- type: Security
+  url: https://www.gonitro.com/security-compliance/security/responsible-disclosure
+- type: VulnerabilityDisclosure
+  url: security/nitro-software-vulnerability-disclosure.yml
+- type: TrustCenter
+  url: https://www.gonitro.com/trust-center
+- type: Compliance
+  url: https://www.gonitro.com/security
+- type: DomainSecurity
+  url: security/nitro-software-domain-security.yml
+- type: Pricing
+  url: https://www.gonitro.com/pricing
+- type: Login
+  url: https://admin.gonitro.com
+- type: TermsOfService
+  url: https://www.gonitro.com/legal/pdf-sign/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.gonitro.com/legal/privacy-policy
+- type: Blog
+  url: https://www.gonitro.com/blog
+- type: Support
+  url: https://community.gonitro.com
+- type: Idempotency
+  url: conventions/nitro-software-conventions.yml
+- type: Conventions
+  url: conventions/nitro-software-conventions.yml
+- type: ErrorCatalog
+  url: errors/nitro-software-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/nitro-software-lifecycle.yml
+- type: DataModel
+  url: data-model/nitro-software-data-model.yml
+- type: Conformance
+  url: conformance/nitro-software-conformance.yml
+- type: MCPServer
+  url: mcp/nitro-software-mcp.yml
+- type: LLMsTxt
+  url: llms/nitro-software-llms.txt
+- type: Overlay
+  url: overlays/nitro-software-openapi-overlay.yaml
+- type: AgentSkill
+  url: skills/_index.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1

@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: developers.gonitro.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct 17 18:42:53 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.gonitro.dev
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 12:41:16 2026 GMT
+  hsts: null
+domains:
+- domain: gonitro.com
+  dnssec: true
+  caa:
+  - 0 issuewild "digicert.com; cansignhttpexchanges=yes"
+  - 0 issuewild "globalsign.com"
+  - 0 issuewild "letsencrypt.org"
+  - 0 issuewild "pki.goog; cansignhttpexchanges=yes"
+  - 0 issuewild "ssl.com"
+  - 0 iodef "mailto:security@gonitro.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: reject
+- domain: gonitro.dev
+  dnssec: false
+  caa: []
+  spf: false
+  dmarc: true
+  dmarc_policy: reject
