@@ -1,0 +1,772 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nitro Public Authentication Sign API",
+    "version": "0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sign",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Cancel Envelope by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID:cancel",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Cancel Envelope by ID** endpoint cancels the signing request for the envelope specified by its UUIDv4 identifier.\nThis endpoint allows you to cancel an envelope and changes its status to Cancelled but keeps it available for reference and reuse after updates. In Cancelled status, no further signing operations can be done on the envelope.\n\n**Note:** Only envelopes that have been sent for signing can be cancelled. Draft envelopes cannot be cancelled.\n"
+        },
+        {
+          "info": {
+            "name": "Reorder Documents by Envelope ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents:reorder",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Reorder Documents by Envelope ID** endpoint reorders all documents associated with a specific envelope based on the order specified in the request body.\nDocuments are returned in an `items` array within the JSON response reflecting the new order.\n"
+        },
+        {
+          "info": {
+            "name": "Send Reminders for Envelope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID:send-reminders",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Send Reminders for Envelope** endpoint triggers reminder notifications to pending participants of a specified envelope using its UUIDv4 identifier.\n"
+        },
+        {
+          "info": {
+            "name": "Send Envelope for Signing",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID:send-for-signing",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Send Envelope for Signing** endpoint sends an envelope to participants for signature collection.\n\n**Note**: All documents in the envelope must have an \"uploaded\" status before the envelope can be sent for signature.\n"
+        },
+        {
+          "info": {
+            "name": "Delete Participants by Participant IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/participants:batch-delete",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Delete Participants** endpoint permanently deletes multiple participants from an envelope."
+        },
+        {
+          "info": {
+            "name": "List Participants by Envelope ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/participants",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **List Participant by Envelope ID** endpoint returns all participants associated with a specific envelope.\nThe request must include the envelope ID to ensure the complete set of participants is retrieved for the correct envelope.\n"
+        },
+        {
+          "info": {
+            "name": "Create Participant(s) by Envelope ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/participants",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Create Participant(s) by Envelope ID** endpoint adds one or more participants to a specified envelope.\nAccepts either a single participant object or a bulk request with an 'items' array.\nParticipants are associated to the parent Envelope and can sign multiple fields in different documents.\n\nWhen creating participants, the following limits apply:\n  - Maximum participants: 200\n"
+        },
+        {
+          "info": {
+            "name": "Delete Fields by Field IDs",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID/fields:batch-delete",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Delete Fields** endpoint permanently deletes multiple fields from a document within an envelope.\n"
+        },
+        {
+          "info": {
+            "name": "List Fields by Document ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID/fields",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **List Fields by Document ID** endpoint retrieves all fields associated with a specific document within an envelope. The request must include the envelope and document ID to ensure the complete set of fields is retrieved for the correct document."
+        },
+        {
+          "info": {
+            "name": "Create Field(s) by Document ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID/fields",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Create Field(s) by Document ID** endpoint creates one or more fields on a document and assigns it to a participant.\nAccepts either a single field object or a bulk request with an 'items' array containing multiple field objects.\n"
+        },
+        {
+          "info": {
+            "name": "List Documents by Envelope ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **List Documents by Envelope ID** endpoint retrieves all documents associated with a specific envelope. Documents are returned in an `items` array within the JSON response.\nThe request must include the envelope ID to ensure the complete set of documents is retrieved for the correct envelope.\n"
+        },
+        {
+          "info": {
+            "name": "Create Document by Envelope ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "nitroDocumentID",
+                "value": "",
+                "type": "query",
+                "description": "  An ID reference to a user-associated Nitro Document. Instead of uploading a new file, you can attach an existing Nitro Document to an envelope by referencing its `nitroDocumentID`. This lets you reuse documents that have already been uploaded.\n\n  To do this, provide the `nitroDocumentID` **instead** of a file in the `payload`.\n\n  Important: `nitroDocumentID` and `payload` parameters are mutually exclusive. You must choose one of the following combinations:\n\n  `payload` + `metadata`\n\n  `nitroDocumentID` + `metadata`\n\n  Providing both in the same request will throw an error.\n"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "metadata",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "payload",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "In Nitro, a *Document* is a file that participants in an eSignature Envelope will read and sign. This could be an employment contract, NDA, legal agreement, banking form, or any other file required in your signature workflow.\n\nThe **Create Document by Envelope ID** endpoint supports uploading a **single** file per request.\nEvery document must be part of an Envelope container. To upload a document, first [Create an Envelope](https://developers.gonitro.com/docs/api-reference/envelope/create-envelo"
+        },
+        {
+          "info": {
+            "name": "List Envelopes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes",
+            "params": [
+              {
+                "name": "pageAfter",
+                "value": "",
+                "type": "query",
+                "description": "An optional cursor token that instructs the endpoint to return items following the last item from the previous response.\n\nTo use this field, include the token value from the `nextPage` field of the previous response in the `pageAfter` query parameter to retrieve the next batch of envelopes.\n\nExample:\n``` shell\n  curl --location 'https://api.gonitro.dev/sign/envelopes?pageAfter=<next_page_token>'   --header 'Authorization: Bearer <your_jwt_token>'\n```\n\n**Note:** Cannot be used together with `pageBefore`.\n"
+              },
+              {
+                "name": "pageBefore",
+                "value": "",
+                "type": "query",
+                "description": "An optional cursor token that instructs the endpoint to return items preceding the last item from the previous response.\n\nTo use this field, include the token from the `nextPage` field of the previous response in the `pageBefore` query parameter to retrieve envelopes before the cursor position.\n\nExample:\n``` shell\ncurl --location 'https://api.gonitro.dev/sign/envelopes?pageBefore=<next_page_token>' --header 'Authorization: Bearer <your_jwt_token>'\n```\n**Note:** Cannot be used together with `pageAfter`.\n"
+              }
+            ]
+          },
+          "docs": "The **List Envelopes** endpoint returns all envelopes associated with an application in an account."
+        },
+        {
+          "info": {
+            "name": "Create Envelope",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/envelopes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Create Envelope** endpoint creates a new **sign envelope** in Nitro.\n\nA **sign envelope** is the container for signature processes in Nitro. It can include assets such as documents, participants, signature fields, and configuration settings that define how the signing process should behave.\nWith the Create Envelope endpoint, you will create an empty sign envelope you can later add assets to.\n"
+        },
+        {
+          "info": {
+            "name": "Convert File to PDF",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/sign/conversions",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "*This endpoint was deprecated* on March 24, 2026, and will be sunset on July 1, 2026. Please migrate your existing functionality to the current endpoint:\nhttps://developers.gonitro.com/docs/api-reference/sign/create-document-by-envelope-id , which already supports multiple file types.\n\nThe **Convert File to PDF** endpoint transforms various file formats into PDF documents for use with the Nitro Sign API.\n\n  ### Input files\n  Supported input document types and formats:\n\n  | Document Type | Format"
+        },
+        {
+          "info": {
+            "name": "Update Participant by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/participants/:participantID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "participantID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the participant in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Update Participant by ID** endpoint modifies a participant's authentication settings.\nThe participant's email cannot be updated. All parameters are optional.\n"
+        },
+        {
+          "info": {
+            "name": "Delete Participant by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/participants/:participantID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "participantID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the participant in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Delete Participant by ID** endpoint permanently deletes a participant from an envelope.\n"
+        },
+        {
+          "info": {
+            "name": "Update Field by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID/fields/:fieldID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "fieldID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Update Field by ID** endpoint modifies the properties of an existing field.\nThe Field type cannot be updated. All parameters are optional.\n"
+        },
+        {
+          "info": {
+            "name": "Delete Field by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID/fields/:fieldID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              },
+              {
+                "name": "fieldID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the field in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Delete Field by ID** endpoint permanently deletes a field from a document within an envelope."
+        },
+        {
+          "info": {
+            "name": "Get Document by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Get Document by ID** endpoint retrieves the details of a single document using its identifier within a specific envelope.\n\nThis endpoint is useful for retrieving specific document information, monitoring document processing status, or displaying document details within your internal system.\n"
+        },
+        {
+          "info": {
+            "name": "Update Document by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Update Document by ID** endpoint allows you to update an existing document's metadata within an envelope.\nThis endpoint performs a partial update on the document, changing only the provided fields while preserving all other properties.\nCurrently, only the document name can be updated.\n"
+        },
+        {
+          "info": {
+            "name": "Delete Document by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Delete Document by ID** endpoint deletes permanently removes a document from an envelope.\n"
+        },
+        {
+          "info": {
+            "name": "Get Envelope by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Get Envelope by ID** endpoint retrieves the details of a single envelope using its UUIDv4 identifier.\n\nThis endpoint is useful for monitoring the progress of an envelope, retrieving specific envelope information as part of API call chaining, or displaying envelope details within your internal system.\n"
+        },
+        {
+          "info": {
+            "name": "Update Envelope",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The **Update Envelope** endpoint modifies an envelope’s name, notification settings, or signing mode. All parameters are optional, so you can update any combination of these fields without affecting the others."
+        },
+        {
+          "info": {
+            "name": "Delete Envelope by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Delete Envelope by ID** endpoint permanently deletes the envelope.\n\n**Warning**: This operation permanently deletes the envelope and cannot be undone. All associated documents, fields, and participants will also be deleted.\n"
+        },
+        {
+          "info": {
+            "name": "Download Sealed Envelope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID:download-sealed",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Download Sealed Envelope** downloads a sealed (signed) envelope's documents along with audit trail in a ZIP archive."
+        },
+        {
+          "info": {
+            "name": "Download Original Envelope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID:download-original",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Download Original Envelope** downloads an envelope's original (unsigned) documents in a ZIP archive."
+        },
+        {
+          "info": {
+            "name": "Download Audit Trail of Envelope",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID:download-audit-trail",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "Downloads the PDF file containing the full audit trail for the selected envelope."
+        },
+        {
+          "info": {
+            "name": "List Signer Signing URLs by Envelope ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/participants/signing-urls",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **List Signer Signing URLs by Envelope ID** endpoint returns the signing URL and its\nexpiry for each signer of an envelope. Only participants with the SIGNER role are included;\nreviewers and CC recipients are excluded. The envelope must be in the SENT status; otherwise\nthe request is rejected with a 409 response.\n"
+        },
+        {
+          "info": {
+            "name": "Download Sealed Document by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/envelopes/:envelopeID/documents/:documentID:download-sealed",
+            "params": [
+              {
+                "name": "envelopeID",
+                "value": "",
+                "type": "path",
+                "description": "A unique UUIDv4 string that identifies the envelope in the Nitro system."
+              },
+              {
+                "name": "documentID",
+                "value": "",
+                "type": "path",
+                "description": "A unique string that identifies the document in the Nitro system."
+              }
+            ]
+          },
+          "docs": "The **Download Sealed Document by ID** downloads a single sealed (signed) document as a PDF from a sealed envelope."
+        },
+        {
+          "info": {
+            "name": "Get Converted File by Job ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/conversions/:jobID:download-converted",
+            "params": [
+              {
+                "name": "jobID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the conversion job"
+              }
+            ]
+          },
+          "docs": "*This endpoint was deprecated* on March 24, 2026, and will be sunset on July 1, 2026. Please migrate your existing functionality to the current endpoint: https://developers.gonitro.com/docs/api-reference/sign/create-document-by-envelope-id , which already supports multiple file types.\n\nDownloads the file that was converted in a previous request.\n"
+        },
+        {
+          "info": {
+            "name": "Get Conversion Job Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/sign/conversions/:jobID/status",
+            "params": [
+              {
+                "name": "jobID",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the conversion job"
+              }
+            ]
+          },
+          "docs": "*This endpoint was deprecated* on March 24, 2026, and will be sunset on July 1, 2026. Please migrate your existing functionality to the current endpoint: https://developers.gonitro.com/docs/api-reference/sign/create-document-by-envelope-id , which already supports multiple file types.\n\nGet status of a conversion by job ID.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,45 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nitro Sign Public Authentication API",
+    "version": "0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Access Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/oauth/token",
+            "headers": [
+              {
+                "name": "Authorization",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "The Get Access Token endpoint exchanges client credentials for an access token\nusing the OAuth 2.0 client credentials flow.\n\nThis endpoint accepts a client ID and client secret and returns an access token that\ncan be used to authenticate API requests. The token follows standard OAuth 2.0 patterns.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

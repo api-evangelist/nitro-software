@@ -2,10 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/nitro-software-openapi-original.json
-note: >-
-  No official hosted/remote Nitro MCP server was found (no listing in docs, npm
-  @modelcontextprotocol, or public MCP registries as of 2026-07). This is a candidate tool
-  surface derived one-to-one from the Nitro API operations to seed an MCP server.
+note: No official hosted/remote Nitro MCP server was found (no listing in docs, npm @modelcontextprotocol,
+  or public MCP registries as of 2026-07). This is a candidate tool surface derived one-to-one from the
+  Nitro API operations to seed an MCP server.
 server:
   name: nitro
   transport: http
@@ -77,3 +76,9 @@ tools:
 - name: get_job_result
   description: Retrieve an async job result
   source_operation: openapi/nitro-software-openapi-original.json#getJobResult
+deployment:
+  mode: none
+  verified: derived
+  tools: 22
+  checked: '2026-08-12'
+  source: catalog MCP census

@@ -1,0 +1,90 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Nitro Sign Public Authentication Platform API",
+    "version": "0.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Platform",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request a transformation operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/transformations"
+          },
+          "docs": "Request a transformation operation"
+        },
+        {
+          "info": {
+            "name": "Request a generation operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/generations"
+          },
+          "docs": "Request a generation operation"
+        },
+        {
+          "info": {
+            "name": "Request an extraction operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/extractions"
+          },
+          "docs": "Request an extraction operation"
+        },
+        {
+          "info": {
+            "name": "Request a conversion operation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.gonitro.dev/conversions"
+          },
+          "docs": "Request a conversion operation"
+        },
+        {
+          "info": {
+            "name": "Get the result of a job by its job id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/jobs/:jobID"
+          },
+          "docs": "Get the result of a job by its job id"
+        },
+        {
+          "info": {
+            "name": "Get the status of a job by its job id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.gonitro.dev/jobs/:jobID/status"
+          },
+          "docs": "Get the status of a job by its job id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
