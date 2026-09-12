@@ -124,6 +124,8 @@ apis:
   - type: Authentication
     url: authentication/nitro-software-authentication.yml
 common:
+- type: Website
+  url: https://www.gonitro.com/
 - type: AgenticAccess
   url: agentic-access/nitro-software-agentic-access.yml
 - type: Authentication
