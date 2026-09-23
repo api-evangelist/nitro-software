@@ -1,0 +1,33 @@
+# Front Door AI Index — nitro-software — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: nitro-software
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.gonitro.com
+  final_host: www.gonitro.com
+  ownership: shared
+  owner: gonitro
+  shares_host_with:
+  - gonitro
+  inherited_from: null
+  verdict: scored
+  score: null
+  host_score: 39
+  density: null
+  words: 2747
+  tiers:
+    agentic: 7
+    core: 31
+    model: 1
+  ambiguous: 25
+  top_terms:
+    AI: 31
+    smart: 16
+    automation: 7
+    AI assistant: 3
+    AI agent: 2
+    MCP: 2
+    agent: 2
+    Claude: 1

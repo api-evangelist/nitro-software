@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Nitro Sign Public Authentication API
   description: REST API for Nitro Sign
@@ -22,9 +22,7 @@ paths:
 
         This endpoint accepts a client ID and client secret and returns an access token that
 
-        can be used to authenticate API requests. The token follows standard OAuth 2.0 patterns.
-
-        '
+        can be used to authenticate API requests. The token follows standard OAuth 2.0 patterns.'
       operationId: getTokenRfc6749
       parameters:
       - name: Authorization
@@ -82,19 +80,6 @@ components:
           type: integer
           format: int64
           description: Token expiration time in seconds
-    OAuth2ErrorResponse:
-      type: object
-      description: RFC 6749 compliant OAuth2 error response
-      properties:
-        error:
-          type: string
-          description: A single ASCII error code
-        error_description:
-          type: string
-          description: Human-readable ASCII text providing additional information
-        error_uri:
-          type: string
-          description: URI identifying a human-readable web page with information about the error
     AuthTokenRequest:
       type: object
       properties:
@@ -122,6 +107,19 @@ components:
           type: integer
           format: int64
           description: Token expiration time in seconds
+    OAuth2ErrorResponse:
+      type: object
+      description: RFC 6749 compliant OAuth2 error response
+      properties:
+        error:
+          type: string
+          description: A single ASCII error code
+        error_description:
+          type: string
+          description: Human-readable ASCII text providing additional information
+        error_uri:
+          type: string
+          description: URI identifying a human-readable web page with information about the error
   securitySchemes:
     bearerAuth:
       type: http

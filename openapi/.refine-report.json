@@ -1,9 +1,7 @@
 {
   "provider": "nitro-software",
   "sources": [
-    "nitro-software-authentication-api-openapi.yml",
-    "nitro-software-platform-api-openapi.yml",
-    "nitro-software-sign-api-openapi.yml"
+    "_original/nitro-software-openapi-original.json"
   ],
   "outputs": [
     "nitro-software-authentication-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "nitro-software-openapi-original.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "nitro-software-openapi-original.json: declared missing tag: Authentication",
+    "nitro-software-openapi-original.json: declared missing tag: Platform",
+    "nitro-software-openapi-original.json: declared missing tag: Sign",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "nitro-software-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nitro-software-platform-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "nitro-software-sign-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
