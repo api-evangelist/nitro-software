@@ -66,20 +66,6 @@ paths:
       security: []
 components:
   schemas:
-    OAuth2TokenResponse:
-      type: object
-      description: RFC 6749 compliant OAuth2 token response
-      properties:
-        access_token:
-          type: string
-          description: The access token
-        token_type:
-          type: string
-          description: The token type (typically 'Bearer')
-        expires_in:
-          type: integer
-          format: int64
-          description: Token expiration time in seconds
     AuthTokenRequest:
       type: object
       properties:
@@ -120,6 +106,20 @@ components:
         error_uri:
           type: string
           description: URI identifying a human-readable web page with information about the error
+    OAuth2TokenResponse:
+      type: object
+      description: RFC 6749 compliant OAuth2 token response
+      properties:
+        access_token:
+          type: string
+          description: The access token
+        token_type:
+          type: string
+          description: The token type (typically 'Bearer')
+        expires_in:
+          type: integer
+          format: int64
+          description: Token expiration time in seconds
   securitySchemes:
     bearerAuth:
       type: http

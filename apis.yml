@@ -52,7 +52,7 @@ tags:
 - Documents
 - E-Signature
 - Electronic Signature
-- Document-Management
+- Document Management
 - Document Intelligence
 - OCR
 - Data Extraction
@@ -68,6 +68,7 @@ tags_raw:
 - OCR
 - Data Extraction
 - Productivity
+- Document-Management
 apis:
 - aid: nitro-software:nitro-software-authentication-api
   name: Nitro Software Authentication API
