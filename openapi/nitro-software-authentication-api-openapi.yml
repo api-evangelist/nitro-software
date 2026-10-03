@@ -80,16 +80,17 @@ components:
       required:
       - clientID
       - clientSecret
-    AuthTokenResponse:
+    OAuth2TokenResponse:
       type: object
+      description: RFC 6749 compliant OAuth2 token response
       properties:
-        accessToken:
+        access_token:
           type: string
           description: The access token
-        tokenType:
+        token_type:
           type: string
           description: The token type (typically 'Bearer')
-        expiresIn:
+        expires_in:
           type: integer
           format: int64
           description: Token expiration time in seconds
@@ -106,17 +107,16 @@ components:
         error_uri:
           type: string
           description: URI identifying a human-readable web page with information about the error
-    OAuth2TokenResponse:
+    AuthTokenResponse:
       type: object
-      description: RFC 6749 compliant OAuth2 token response
       properties:
-        access_token:
+        accessToken:
           type: string
           description: The access token
-        token_type:
+        tokenType:
           type: string
           description: The token type (typically 'Bearer')
-        expires_in:
+        expiresIn:
           type: integer
           format: int64
           description: Token expiration time in seconds
