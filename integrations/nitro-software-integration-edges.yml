@@ -8,6 +8,9 @@ checked:
 - https://www.indexventures.com/companies/
 - https://www.sequoiacap.com/our-companies/
 - https://www.sequoiacap.com/sitemap.xml
+- https://api.first.org/data/v1/teams
+- https://raw.githubusercontent.com/CVEProject/cve-website/dev/src/assets/data/CNAsList.json
+- https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json
 source:
 - microsoft-power-automate/integrations/microsoft-power-automate-integration-edges.yml
 edges:
@@ -57,3 +60,40 @@ edges:
     status: 'ASX: NTO'
   detected_by: sweep-vc-portfolios.py
   first_seen: '2026-10-21'
+- partner_name: CVE Program (CVE Numbering Authorities)
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.cve.org/PartnerInformation/ListofPartners/partner/Nitro
+  category: Vulnerability disclosure (CVE Numbering Authority)
+  contract_reference:
+    register: CVE Program CNA list (github.com/CVEProject/cve-website CNAsList.json @ 239d3d9b68e0)
+    standard: CVE Program CNA Operational Rules (CVE Numbering Authority)
+    spec_file: null
+    role: cve-numbering-authority
+    registered_name: Nitro Software, Inc.
+    matched_domain: gonitro.com
+    matched_by: domain+name-among-holders
+    cna_id: CNA-2026-0077
+    cna_short_name: Nitro
+    cna_types:
+    - Vendor
+    cna_roles:
+    - CNA
+    scope: Nitro software issues only.
+    top_level_root: MITRE Corporation
+    root: EU Agency for Cybersecurity (ENISA)
+    security_advisories:
+    - https://www.gonitro.com/documentation/release-notes
+    disclosure_policy:
+    - https://www.gonitro.com/security-compliance/security/responsible-disclosure
+    country: USA
+    signal_note: listing as a CVE Numbering Authority = participation (a public commitment to assign CVE IDs and
+      publish advisories for its scope); never a count of CVEs
+    detected_by: sweep-vulnerability-disclosure-cna.py
+    detected: '2026-10-22'
+  detected_by: sweep-vulnerability-disclosure-cna.py
+  first_seen: '2026-10-22'
