@@ -124,6 +124,8 @@ apis:
   - type: Authentication
     url: authentication/nitro-software-authentication.yml
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/nitro-software/overview
 - type: Website
   url: https://www.gonitro.com/
 - type: AgenticAccess
