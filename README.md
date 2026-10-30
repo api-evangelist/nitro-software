@@ -64,6 +64,134 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Nitro Software is a company surfaced as a portfolio company of battery-ventures and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Nitro Software is a document productivity company (San Francisco, CA; part of the Nitro Productivity Platform) offering PDF editing, eSignature (Nitro Sign), and document intelligence. Nitro publishes a public developer platform of REST APIs at developers.gonitro.com covering two surfaces: a PDF Services / Document Intelligence Platform API (convert, extract, transform, redact, OCR, generate/fill forms) and the Nitro Sign API (envelopes, documents, participants, fields, sealing, audit trails, and signer signing URLs). The APIs use machine-to-machine OAuth 2.0 client-credentials with short-lived bearer JWTs, RFC 9457 problem+json errors, cursor pagination, asynchronous jobs with callbacks, and RFC 9421 signed Sign webhooks. API access requires a Nitro Sign Enterprise plan.
 
-Backed by: battery-ventures
+**Areas:** Company · PDF · Documents · E-Signature · Document Management · Document Intelligence · OCR · Data Extraction · Productivity
+
+## Nitro Software on APIs.io
+
+Everything profiled for Nitro Software is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/nitro-software/](https://apis.io/providers/nitro-software/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Nitro Software Authentication API](https://apis.io/apis/nitro-software/nitro-software-authentication-api/) — The Authentication API from Nitro Software — 1 operation(s) for authentication.
+- [Nitro Software Platform API](https://apis.io/apis/nitro-software/nitro-software-platform-api/) — The Platform API from Nitro Software — 6 operation(s) for platform.
+- [Nitro Software Sign API](https://apis.io/apis/nitro-software/nitro-software-sign-api/) — The Sign API from Nitro Software — 22 operation(s) for sign.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Nitro Software Sign Webhooks](https://apis.io/asyncapis/nitro-software/nitro-software-sign-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [nitro](https://apis.io/servers/nitro-software/nitro/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Nitro Software Agentic Access](https://apis.io/agentic-access/nitro-software/nitro-software-agentic-access/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Nitro Sign Public Authentication API](https://apis.io/collections/nitro-software/open-nitro-software-authentication-api/)
+- [Nitro Sign Public Authentication Platform API](https://apis.io/collections/nitro-software/open-nitro-software-platform-api/)
+- [Nitro Public Authentication Sign API](https://apis.io/collections/nitro-software/open-nitro-software-sign-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Nitro Software Openapi Overlay](https://apis.io/overlays/nitro-software/nitro-software-openapi-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Nitro Software Authentication](https://apis.io/security/nitro-software/nitro-software-authentication/)
+- [Nitro Software Domain Security](https://apis.io/security/nitro-software/nitro-software-domain-security/)
+- [Nitro Software Trust Center](https://apis.io/security/nitro-software/nitro-software-trust-center/)
+- [Nitro Software Vulnerability Disclosure](https://apis.io/security/nitro-software/nitro-software-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.gonitro.com/)
+- [Documentation](https://developers.gonitro.com/docs)
+- [Getting started](https://developers.gonitro.com/docs/getting-started/basic-setup)
+- [API reference](https://developers.gonitro.com/docs/api-reference/sign/list-envelopes)
+- [Pricing](https://www.gonitro.com/pricing)
+- [Support](https://community.gonitro.com)
+- [Blog](https://www.gonitro.com/blog)
+- [Security](https://www.gonitro.com/security-compliance/security/responsible-disclosure)
+- [Compliance](https://www.gonitro.com/security)
+- [Trust centre](https://www.gonitro.com/trust-center)
+- [Terms of service](https://www.gonitro.com/legal/pdf-sign/terms-of-service)
+- [Privacy policy](https://www.gonitro.com/legal/privacy-policy)
+- [Status](https://status.gonitro.com)
+
+## API Evangelist rating
+
+**Kin Score 56.0** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 56.5 |
+| Contract governance | 18.2 |
+| Operational transparency | 57.9 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 53.9 |
+
+**Agent readiness 35.8** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/nitro-software/](https://apis.io/providers/nitro-software/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Nitro Software: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/nitro-software/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
